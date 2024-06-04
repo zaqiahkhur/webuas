@@ -2,6 +2,7 @@
 require_once('database.php');
 $data=getalldata('barang');
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -109,9 +110,18 @@ session_start();
                                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length">
                                </div></div>
                                 <div class="col-sm-12 col-md-6 "><div id="dataTable_filter" class="dataTables_filter">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add data  </button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add barang  </button>
                                 
 <!-- Modal  add barang -->
+  <?php
+    if (isset($error_message)) {
+        echo "<p style='color: red;'>$error_message</p>";
+    }
+
+    if (isset($success_message)) {
+        echo "<p style='color: green;'>$success_message</p>";
+    }
+    ?>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

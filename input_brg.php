@@ -1,16 +1,28 @@
 <?php
-// require("database.php");
+// Koneksi ke database
 $koneksi = mysqli_connect("localhost", "root", "", "peminjamanbarang") or die;
 
-// session_start();
-$xkodebarang=$_POST['kodebarang'];
-$xbarang=$_POST['namabarang'];
-$xjml=$_POST['jml'];
-// var_dump($koneksi);
-// $sql="INSERT INTO barang VALUES (null,$kodebarang','$barang','$kategori','$merk','$jumlah')";
-$sql="INSERT INTO `barang`(`Kode_barang`, `Nama_barang`, `Jumlah_barang`) VALUES ('$xkodebarang','$xbarang','$xjml')";
-$save=mysqli_query($koneksi,$sql);
-if($save){
-    header("location:barang.php");
+// Mengambil data dari POST
+$xkodebarang = $_POST['kodebarang'];
+$xbarang = $_POST['namabarang'];
+$xjml = $_POST['jml'];
+
+// Mengecek apakah kode barang sudah ada
+$cek_sql = "SELECT * FROM `barang` WHERE `nama_barang` = '$xbarang'";
+$cek_result = mysqli_query($koneksi, $cek_sql);
+
+if(mysqli_num_rows($cek_result) > 0) {
+    // Jika kode barang sudah ada, tampilkan pesan error
+    echo "Nama barang sudah ada. Silakan gunakan Nama barang yang lain.";
+} else {
+    // Jika kode barang belum ada, lakukan INSERT
+    $sql = "INSERT INTO `barang`(`Kode_barang`, `nama_barang`, `Jumlah_barang`) VALUES 
+    ('$xkodebarang','$xbarang','$xjml')";
+    $save = mysqli_query($koneksi, $sql);
+    if($save) {
+        header("location:barang.php");
+    } else {
+        echo "Terjadi kesalahan saat menyimpan data.";
+    }
 }
 ?>

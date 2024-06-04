@@ -2,13 +2,29 @@
 require_once('database.php');
 $data=getalldata('peminjaman');
 session_start();
+$sql_users = "SELECT no_identitas, nama FROM peminjam WHERE role = 'member'";
+$result_users = mysqli_query($koneksi, $sql_users);
+
+$query =mysqli_query($koneksi, "SELECT max(Kode_pinjam) as kodeTerbesar  from peminjaman");
+$data2= mysqli_fetch_array($query);
+$kodeBarangpinjam = $data2['kodeTerbesar'];
+$urutan = (int) substr($kodeBarangpinjam,3,3);
+$urutan++;
+$huruf = "PMJ";
+$kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
+//echo $kodeBarang;
+// $date1= new DateTime();
+// $date2 = new DateTime();
+// if ($date2 > $date1) {
+//   echo"ok";
+// }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -121,30 +137,44 @@ session_start();
   <div class="form-row">
     <div class="form-group col-md-6">
        <label for="kodepinjam">Kode pinjam</label>
-      <input type="text" class="form-control" name="kodepinjam">
+      <input type="text" class="form-control" name="kodepinjam" value="<?=$kodeBarangpinjam ?>" readonly>
     </div>
     <div class="form-group col-md-6">
-      <label for="kodebarang">Kode Barang</label>
-      <input type='text' class='form-control' name='kodebarang' >
+       <label for="kodebarang">Kode barang</label>
+      <input type="text" class="form-control" name="kodebarang">
     </div>
   </div>
    <div class="form-row">
   <div class="form-group col-md-6">
-     <label for="noiden">No identitas</label>
-    <input type="text" class="form-control" name="noiden" >
+ <div class="form-floating">
+  <select class="form-select" name="noiden" id="floatingSelect" aria-label="Floating label select example">
+    <option selected>Pilih</option>
+         <?php
+              if (mysqli_num_rows($result_users) > 0) {
+                 while ($row = mysqli_fetch_assoc($result_users)) {
+                  echo "
+                  <option value='" . $row['no_identitas'] . "'>" . $row['no_identitas'] . " - " . $row['nama'] . "</option>
+                    ";
+                    }
+                  }
+                ?>
+  </select>
+  <label for="floatingSelect">No identitas</label>
+</div>
+    
   </div>
     <div class="form-group col-md-6">
     <label for="jml">Jumlah Barang</label>
     <input type="text" class="form-control" name="jml" >
   </div>
   </div>
-     <div class="form-group">
+     <!-- <div class="form-group">
     <label for="tglpinjam">Tanggal Pinjam</label>
     <input type="date" class="form-control" name="tglpinjam" >
-  </div>
+  </div> -->
    <div class="form-group">
     <label for="tglkembali">Tanggal Kembali</label>
-    <input type="date" class="form-control" name="tglkembali" >
+    <input type="date" class="form-control" name="tglkembali" value="<?= isset($id['tanggal_kembali']) ? date('Y-m-d') : '' ?>" min="<?= date('Y-m-d') ?>">
   </div>
   <div class="form-row">
   <div class="form-group col-md-6">
@@ -187,7 +217,7 @@ session_start();
                                     <tbody> 
                                          <?php foreach($data as $item) : ?>
                                     <tr class="odd">
-                                            <td class="sorting_1"><?php echo $item['Kode_pinjam']; ?></td>
+                                            <td><?php echo $item['Kode_pinjam']; ?></td>
                                             <td><?php echo $item['kode_barang']; ?></td>
                                             <td><?php echo $item['no_identitas']; ?></td>
                                             <td><?php echo $item['Jumlah_barang']; ?></td>
@@ -196,8 +226,7 @@ session_start();
                                             <td><?php echo $item['status']; ?></td>
                                             <td><?php echo $item['keperluan']; ?></td>
                                              <td><a href='' class='btn btn-warning' data-toggle="modal" data-target="#modal<?php echo "$item[id]";?>" data-target="#edit8">Edit</a> 
-                                                <?php echo"<a href='javascript:kembalikanBarang(".$item['id']." ,".$item['Jumlah_barang'].",".$item['kode_barang'].")'>
-                                                <button class='btn btn-sucsess'>Kembalikan</button></a>";?>
+                                             <?php echo "<a href='javascript:kembalikanBarang(".$item['id']." ,".$item['Jumlah_barang'].",".$item['kode_barang'].")'><button type='button' class='btn btn-success'>Kembalikan</button></a>" ; ?>
                                             
                                             </tr>
                                              </td>
@@ -334,6 +363,7 @@ session_start();
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
 
