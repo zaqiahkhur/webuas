@@ -108,8 +108,9 @@ session_start();
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-            <h1 class="h3 mb-0 text-gray-800">user</h1>
-           
+            <!-- <h1 class="h3 mb-0 text-gray-800">user</h1> -->
+         <center>   <img src="logoo.jpg" alt="" width="300px"></center>
+        <center><h1>SELAMAT DATANG <span style="text-transform:uppercase"> Member <?=$_SESSION['username']?> </span>DI PEMINJAMAN BARANG SMK BAKNUS 666</h1></center>
       
                             
                         </div>

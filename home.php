@@ -82,7 +82,9 @@ session_start();
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
+                        
                         <li class="nav-item dropdown no-arrow">
+                        
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="img-profile rounded-circle"
@@ -108,6 +110,7 @@ session_start();
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
+                 <center>   <h1 class="h3 mb-0 text-gray-800"><span style="text-transform:uppercase">Selamat datang Admin <?=$_SESSION['username']?> </span></h1>  </center>
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
             <div class="row">
 

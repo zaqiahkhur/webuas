@@ -3,13 +3,13 @@ require_once('database.php');
 $data=getalldata('barang');
 session_start();
 
-$query =mysqli_query($koneksi, "SELECT max(Kode_barang) as kodeTerbesar  from barang");
-$data2= mysqli_fetch_array($query);
-$kodeBarang = $data2['kodeTerbesar'];
-$urutan = (int) substr($kodeBarang,3,3);
-$urutan++;
-$huruf = "BRG";
-$kodeBarang = $huruf . sprintf("%03s", $urutan);
+// $query =mysqli_query($koneksi, "SELECT max(Kode_barang) as kodeTerbesar  from barang");
+// $data2= mysqli_fetch_array($query);
+// $kodeBarang = $data2['kodeTerbesar'];
+// $urutan = (int) substr($kodeBarang,3,3);
+// $urutan++;
+// $huruf = "BRG";
+// $kodeBarang = $huruf . sprintf("%03s", $urutan);
 
 ?>
 
@@ -118,7 +118,7 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
                                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length">
                                </div></div>
                                 <div class="col-sm-12 col-md-6 "><div id="dataTable_filter" class="dataTables_filter">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add barang  </button>
+                                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add barang  </button> -->
                                 
 <!-- Modal  add barang -->
   <?php
@@ -174,7 +174,7 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
                                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">id</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">Nama barang</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 55.7969px;">Jumlah Barang</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 55.7969px;">Action</th>
+                                        <!-- <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 55.7969px;">Action</th> -->
                                     </thead>
                                     <tbody>
                                            <?php foreach($data as $item) : ?>
@@ -183,7 +183,7 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
                                             <td><?php echo $item['id']; ?></td>
                                             <td><?php echo $item['nama_barang']; ?></td>
                                             <td><?php echo $item['Jumlah_barang']; ?></td>
-                                            <td><a href='' class='btn btn-warning' data-toggle="modal" data-target="#modal<?php echo "$item[id]";?>" data-target="#edit8">Edit</a> <?php echo"<a href='javascript:hapusdata(".$item['id'].")'><button class='btn btn-danger'>Hapus</button></a>";?></td>
+                                            <!-- <td><a href='' class='btn btn-warning' data-toggle="modal" data-target="#modal<?php echo "$item[id]";?>" data-target="#edit8">Edit</a> <?php echo"<a href='javascript:hapusdata(".$item['id'].")'><button class='btn btn-danger'>Hapus</button></a>";?></td> -->
                                             </tr>
                                              </td>
                                         </tr>   

@@ -113,6 +113,17 @@ function getalldata($tablename)
             }
 
           }
+          function getpinjam($no_identitas)
+{
+    global $koneksi;
+  $hasil=mysqli_query($koneksi,"SELECT * FROM peminjaman WHERE no_identitas = '$no_identitas'");
+    $rows=[];
+        while($row = mysqli_fetch_assoc($hasil))
+        {
+            $rows[] = $row;
+        }
+        return $rows;
+}
 
 
 ?>

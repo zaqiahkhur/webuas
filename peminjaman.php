@@ -146,21 +146,9 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
   </div>
    <div class="form-row">
   <div class="form-group col-md-6">
- <div class="form-floating">
-  <select class="form-select" name="noiden" id="floatingSelect" aria-label="Floating label select example">
-    <option selected>Pilih</option>
-         <?php
-              if (mysqli_num_rows($result_users) > 0) {
-                 while ($row = mysqli_fetch_assoc($result_users)) {
-                  echo "
-                  <option value='" . $row['no_identitas'] . "'>" . $row['no_identitas'] . " - " . $row['nama'] . "</option>
-                    ";
-                    }
-                  }
-                ?>
-  </select>
-  <label for="floatingSelect">No identitas</label>
-</div>
+   <label for="noiden">No identitas</label>
+    <input type="text" class="form-control" name="noiden" >
+
     
   </div>
     <div class="form-group col-md-6">

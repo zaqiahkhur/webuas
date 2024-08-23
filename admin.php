@@ -103,7 +103,7 @@ session_start();
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Daftar Admin</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Daftar User</h1>
                   <div class="card-body">
                             <div class="table-responsive">
                                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length">
@@ -116,7 +116,7 @@ session_start();
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Admin</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -124,10 +124,7 @@ session_start();
       <div class="modal-body">
        <form action = "input_adm.php" method ="post">
   <div class="form-row">
-    <div class="form-group col-md-6">
-       <label for="id">Id</label>
-      <input type="text" class="form-control" name="id">
-    </div>
+   
     <div class="form-group col-md-6">
       <label for="nama">Nama</label>
       <input type='text' class='form-control' name='nama' >

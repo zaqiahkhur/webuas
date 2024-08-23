@@ -76,8 +76,8 @@ if($_SESSION['role']=="admin"):?>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar" style="">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">User</h6>
-                        <a class="collapse-item" href="admin.php">Admin</a>
-                            <a class="collapse-item" href="peminjam.php">Peminjam</a>
+                        <a class="collapse-item" href="admin.php">Daftar User</a>
+                            
                     </div>
                     
                 </div>
@@ -129,7 +129,7 @@ if($_SESSION['role']=="admin"):?>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">Barang</a>
+                        <a class="collapse-item" href="barang_user.php">Barang</a>
                     </div>
                 </div>
             </li>
@@ -155,7 +155,7 @@ if($_SESSION['role']=="admin"):?>
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Peminjaman</h6>
-                        <a class="collapse-item" href="">Peminjaman</a>
+                        <a class="collapse-item" href="peminjaman_user.php">Peminjaman</a>
                     </div>
                 </div>
             </li>
