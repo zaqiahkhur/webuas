@@ -4,6 +4,8 @@ require_once('database.php');
 $data=getpinjam($_SESSION['no_identitas']);
 $sql_users = "SELECT no_identitas, nama FROM peminjam WHERE role = 'member'";
 $result_users = mysqli_query($koneksi, $sql_users);
+$barang ="SELECT Kode_barang, nama_barang FROM barang";
+$result_kode = mysqli_query($koneksi, $barang);
 
 $query =mysqli_query($koneksi, "SELECT max(Kode_pinjam) as kodeTerbesar  from peminjaman");
 $data2= mysqli_fetch_array($query);
@@ -134,45 +136,43 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
       </div>
       <div class="modal-body">
        <form action = "input_peminjamanmem.php" method ="post">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-       <label for="kodepinjam">Kode pinjam</label>
-      <input type="text" class="form-control" name="kodepinjam" value="<?=$kodeBarangpinjam ?>" readonly>
-    </div>
-    <div class="form-group col-md-6">
-       <label for="kodebarang">Kode barang</label>
-      <input type="text" class="form-control" name="kodebarang">
-    </div>
-  </div>
-   <div class="form-row">
-  <div class="form-group col-md-6">
- <label for="noiden">No identitas</label>
-    <input type="text" class="form-control" name="noiden" > 
-    
-  </div>
-    <div class="form-group col-md-6">
-    <label for="jml">Jumlah Barang</label>
-    <input type="text" class="form-control" name="jml" >
-  </div>
-  </div>
+
+    <div class="form-floating mb-3">
+  <input type="text" class="form-control" name="kodepinjam" value="<?=$kodeBarangpinjam ?>" readonly>
+  <label for="floatingInput">Kode pinjam</label>
+</div>    
+      <div class="form-floating mb-3">
+ <input type="text" class="form-control" name="kodebarang" >
+  <label for="floatingInput">Kode barang</label>
+</div> 
+    <div class="form-floating mb-3">
+  <input type="text" class="form-control" name="noiden" >
+  <label for="noiden">No identitas</label>
+</div>  
+   <div class="form-floating mb-3">
+  <input type="number" class="form-control" name="jml">
+  <label for="jml">Jumlah Barang</label>
+</div>
+   
+
      <!-- <div class="form-group">
     <label for="tglpinjam">Tanggal Pinjam</label>
     <input type="date" class="form-control" name="tglpinjam" >
   </div> -->
-   <div class="form-group">
-    <label for="tglkembali">Tanggal Kembali</label>
-    <input type="date" class="form-control" name="tglkembali" value="<?= isset($id['tanggal_kembali']) ? date('Y-m-d') : '' ?>" min="<?= date('Y-m-d') ?>">
+     <div class="form-floating mb-3">
+  <input type="date"  class="form-control" name="tglkembali" value="<?= isset($id['tanggal_kembali']) ? date('Y-m-d') : '' ?>" min="<?= date('Y-m-d') ?>">
+  <label for="tglkembali">Tanggal Kembali</label>
   </div>
-  <div class="form-row">
-  <div class="form-group col-md-6">
+
+  <div class="form-floating mb-3">
+      <input type="text" class="form-control" name="status" >
     <label for="status">Status</label>
-    <input type="text" class="form-control" name="status" >
   </div>
-  <div class="form-group col-md-6">
+  <div class="form-floating mb-3">
+      <input type="text" class="form-control" name="keperluan" >
     <label for="keperluan">Keperluan</label>
-    <input type="text" class="form-control" name="keperluan" >
   </div>
-   </div>
+ 
 
     <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
     <input type="submit" class="btn btn-primary"></input>

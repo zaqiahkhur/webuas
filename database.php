@@ -57,7 +57,7 @@ function getalldata($tablename)
             function jumlahUser()
           {
             global $koneksi;
-            $getuser=mysqli_query($koneksi,"SELECT COUNT(*) AS jumlah FROM peminjam") ;
+            $getuser=mysqli_query($koneksi,"SELECT COUNT(*) AS jumlah FROM admin") ;
             $rowCountuser = $getuser->fetch_assoc();
             $rowCountuser['jumlah'];
             return $rowCountuser;
@@ -70,6 +70,18 @@ function getalldata($tablename)
             $rowCountpeminjaman['jumlah'];
             return $rowCountpeminjaman;
           } 
+          function getCountStatus($nama_tabel, $status)
+          {
+              global $koneksi;
+              $sql = "SELECT * FROM $nama_tabel WHERE status = '$status'";
+              if ($result = mysqli_query($koneksi, $sql)) {
+                  $rowcount = mysqli_num_rows($result);
+                  return $rowcount;
+              }
+          }
+
+        
+          
           function getTopPinjam() {
     global $koneksi;
     $sql2= mysqli_query($koneksi,"SELECT peminjaman.kode_barang, barang.nama_barang, COUNT(peminjaman.kode_barang) as Jumlah FROM barang INNER JOIN peminjaman ON barang.kode_barang = peminjaman.kode_barang GROUP BY barang.kode_barang, barang.nama_barang;");
@@ -79,6 +91,7 @@ function getalldata($tablename)
     }
     return $rows;
   }
+            
            function kembalikanBarang($id,$jumlah,$kd)
           {
             global $koneksi;

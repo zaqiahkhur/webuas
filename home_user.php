@@ -109,8 +109,23 @@ session_start();
 
                     <!-- Page Heading -->
             <!-- <h1 class="h3 mb-0 text-gray-800">user</h1> -->
-         <center>   <img src="logoo.jpg" alt="" width="300px"></center>
-        <center><h1>SELAMAT DATANG <span style="text-transform:uppercase"> Member <?=$_SESSION['username']?> </span>DI PEMINJAMAN BARANG SMK BAKNUS 666</h1></center>
+            <div class="card" style="margin-top: 50px; margin-bottom: 50px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+    <div class="card-body">
+        <h5 class="card-title">
+            <center>
+                <h1 class="h3 mb-0 text-gray-800" style="padding-top: 20px;">
+                    <span style="text-transform:uppercase"> Hello <?=$_SESSION['username']?> </span>
+                </h1>
+            </center>
+        </h5>
+        <center>
+            <p class="card-text" style="padding-bottom: 20px;">
+                SELAMAT DATANG DI MEMBER PEMINJAMAN SMK BAKTI NUSANTARA 666
+            </p>
+        </center>
+    </div>
+</div>
+     
       
                             
                         </div>

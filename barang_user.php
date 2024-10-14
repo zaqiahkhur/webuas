@@ -167,8 +167,14 @@ session_start();
 <!-- end Modal add barang -->
 
 
-
-<div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Data Barang</h6>
+                        </div>
+                        <div class="card-body">
+                                      <div class="table-responsive">
+<div class="row">
+<div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                                     <thead>
                                          <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 64.75px;">Kode Barang</th>
                                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">id</th>
@@ -225,7 +231,12 @@ session_start();
     </div>
   </div>
 </div>
-</div></div></div>
+</div></div>
+  </div>
+                    </div>
+</div>
+         
+</div>
                                    <?php endforeach; ?>
                                     </tbody>
                                 </table></div></div></div>

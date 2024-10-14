@@ -2,8 +2,10 @@
 require_once('database.php');
 $data=getalldata('peminjaman');
 session_start();
-$sql_users = "SELECT no_identitas, nama FROM peminjam WHERE role = 'member'";
+$sql_users = "SELECT no_identitas, username FROM admin WHERE role = 'member'";
 $result_users = mysqli_query($koneksi, $sql_users);
+$barang ="SELECT Kode_barang, nama_barang FROM barang";
+$result_kode = mysqli_query($koneksi, $barang);
 
 $query =mysqli_query($koneksi, "SELECT max(Kode_pinjam) as kodeTerbesar  from peminjaman");
 $data2= mysqli_fetch_array($query);
@@ -120,7 +122,7 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
                                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length">
                               </div></div>
                                 <div class="col-sm-12 col-md-6"><div id="dataTable_filter" class="dataTables_filter">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Peminjaman  </button>
+                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="margin-top: 20px; margin-bottom: 20px;"> Add Peminjaman</button>
                                 
 <!-- Modal  add barang -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -134,51 +136,70 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
       </div>
       <div class="modal-body">
        <form action = "input_peminjaman.php" method ="post">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-       <label for="kodepinjam">Kode pinjam</label>
-      <input type="text" class="form-control" name="kodepinjam" value="<?=$kodeBarangpinjam ?>" readonly>
-    </div>
-    <div class="form-group col-md-6">
-       <label for="kodebarang">Kode barang</label>
-      <input type="text" class="form-control" name="kodebarang">
-    </div>
-  </div>
-   <div class="form-row">
-  <div class="form-group col-md-6">
-   <label for="noiden">No identitas</label>
-    <input type="text" class="form-control" name="noiden" >
 
-    
-  </div>
-    <div class="form-group col-md-6">
-    <label for="jml">Jumlah Barang</label>
-    <input type="text" class="form-control" name="jml" >
-  </div>
-  </div>
+<div class="form-floating mb-3">
+  <input type="text" class="form-control" name="kodepinjam" value="<?=$kodeBarangpinjam ?>" readonly>
+  <label for="floatingInput">Kode pinjam</label>
+</div>  
+   <div class="form-floating mb-3">
+                                    <select name="kodebarang" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                        <option selected>--PILIH--</option>
+                                        <?php
+                                        if (mysqli_num_rows($result_kode) > 0) {
+                                            while ($row = mysqli_fetch_assoc($result_kode)) {
+                                                echo "
+                                                        <option value='" . $row['Kode_barang'] . "'>" . $row['Kode_barang'] . " - " . $row['nama_barang'] . "</option>
+                                                    ";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                    <label for="floatingSelect">Kode barang</label>
+                                </div>
+
+<div class="form-floating mb-3">
+                                    <select name="noiden" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                        <option selected>--PILIH--</option>
+                                        <?php
+                                        if (mysqli_num_rows($result_users) > 0) {
+                                            while ($row = mysqli_fetch_assoc($result_users)) {
+                                                echo "
+                                                        <option value='" . $row['no_identitas'] . "'>" . $row['no_identitas'] . " - " . $row['username'] . "</option>
+                                                    ";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                    <label for="floatingSelect">No Identitas</label>
+                                </div>
+   <div class="form-floating mb-3">
+  <input type="number" class="form-control" name="jml">
+  <label for="jml">Jumlah Barang</label>
+</div>
+
      <!-- <div class="form-group">
     <label for="tglpinjam">Tanggal Pinjam</label>
     <input type="date" class="form-control" name="tglpinjam" >
   </div> -->
-   <div class="form-group">
-    <label for="tglkembali">Tanggal Kembali</label>
-    <input type="date" class="form-control" name="tglkembali" value="<?= isset($id['tanggal_kembali']) ? date('Y-m-d') : '' ?>" min="<?= date('Y-m-d') ?>">
-  </div>
-  <div class="form-row">
-  <div class="form-group col-md-6">
+   <div class="form-floating mb-3">
+  <input type="date"  class="form-control" name="tglkembali" value="<?= isset($id['tanggal_kembali']) ? date('Y-m-d') : '' ?>" min="<?= date('Y-m-d') ?>">
+  <label for="tglkembali">Tanggal Kembali</label>
+    </div>
+  
+  <div class="form-floating mb-3">
+   <input type="text" class="form-control" name="status" value="Belum Kembali" readonly >
     <label for="status">Status</label>
-    <input type="text" class="form-control" name="status" >
   </div>
-  <div class="form-group col-md-6">
+  <div class="form-floating mb-3">
+   <input type="text" class="form-control" name="keperluan" >
     <label for="keperluan">Keperluan</label>
-    <input type="text" class="form-control" name="keperluan" >
   </div>
-   </div>
+  
 
     <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
     <input type="submit" class="btn btn-primary"></input>
 </form>
-      </div>
+    
     </div>
   </div>
 </div>
@@ -186,7 +207,12 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
 <!-- end Modal add barang -->
 
 
-
+ <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Data Peminjaman</h6>
+                        </div>
+                        <div class="card-body">
+                                      <div class="table-responsive">
 <div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                                   <thead>
                                         <tr role="row">
@@ -277,7 +303,11 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
     </div>
   </div>
 </div>
-</div></div></div>
+</div></div>
+</div>
+                        </div>
+                    </div>
+</div>
                                    <?php endforeach; ?>
                                     </tbody>
                                 </table></div></div></div>

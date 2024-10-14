@@ -1,20 +1,44 @@
 <?php
 require_once('database.php');
-$data=getalldata('admin');
+$data=getalldata('peminjaman');
 session_start();
+$sql_users = "SELECT no_identitas, username FROM admin WHERE role = 'member'";
+$result_users = mysqli_query($koneksi, $sql_users);
+$barang ="SELECT Kode_barang, nama_barang FROM barang";
+$result_kode = mysqli_query($koneksi, $barang);
+$sqlKembali = "SELECT * FROM peminjaman WHERE status = 'kembali'";
+$resultKembali = mysqli_query($koneksi, $sqlKembali);
+
+$sqlBelumKembali = "SELECT * FROM peminjaman WHERE status = 'belum kembali'";
+$resultBelumKembali = mysqli_query($koneksi, $sqlBelumKembali);
+
+$query =mysqli_query($koneksi, "SELECT max(Kode_pinjam) as kodeTerbesar  from peminjaman");
+$data2= mysqli_fetch_array($query);
+$kodeBarangpinjam = $data2['kodeTerbesar'];
+$urutan = (int) substr($kodeBarangpinjam,3,3);
+$urutan++;
+$huruf = "PMJ";
+$kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
+//echo $kodeBarang;
+// $date1= new DateTime();
+// $date2 = new DateTime();
+// if ($date2 > $date1) {
+//   echo"ok";
+// }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Blank</title>
+    <title>Peminjaman</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -28,12 +52,11 @@ session_start();
 </head>
 
 <body id="page-top">
-    <?php
+  <?php
     if($_SESSION['status']!="login"){
         header("location:login.php?msg=belum_login");
     }
     ?>  
-
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -49,7 +72,7 @@ session_start();
             <div id="content">
 
                 <!-- Topbar -->
-              <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -66,11 +89,6 @@ session_start();
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
-                       
-
-                      
-
                         <!-- Nav Item - Messages -->
                     
 
@@ -103,105 +121,85 @@ session_start();
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Daftar User</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Daftar peminjaman sudah kembali</h1>
                   <div class="card-body">
                             <div class="table-responsive">
                                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length">
-                               </div></div>
-                                <div class="col-sm-12 col-md-6"><div id="dataTable_filter" class="dataTables_filter">  
-                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="margin-top: 20px; margin-bottom: 20px;"> Add User</button>
+                              </div></div>
+                                <div class="col-sm-12 col-md-6"><div id="dataTable_filter" class="dataTables_filter">
+                               
+                                
+<!-- Modal  add barang -->
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      
-      <div class="modal-body">
-        <form action="input_adm.php" method="post">
-          <!-- Nama -->
-         
-            <div class="form-group ">
-              <label for="nama">Nama</label>
-              <input type="text" class="form-control" name="nama" required>
-            </div>
-          
-          <!-- Password -->
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" name="password" required>
-            </div>
-            
-            <!-- Unit Kerja -->
-            <div class="form-group col-md-6">
-              <label for="unitkerja">Unit Kerja</label>
-              <input type="text" class="form-control" name="unitkerja" required>
-            </div>
-          </div>
-          
-          <!-- Role -->
-          <div class="form-group">
-            <label for="role">Role</label>
-            <input type="text" class="form-control" name="role" required>
-          </div>
-
-          <!-- Tombol Batal dan Submit -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-            <input type="submit" class="btn btn-primary" value="Simpan">
-          </div>
-        </form>
-      </div>
+     <!-- <div class="form-group">
+    <label for="tglpinjam">Tanggal Pinjam</label>
+    <input type="date" class="form-control" name="tglpinjam" >
+  </div> -->
     </div>
   </div>
 </div>
 </div></div></div>
+<!-- end Modal add barang -->
+
+
  <div class="card shadow mb-4">
-    <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Peminjaman</h6>
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Data Barang</h6>
                         </div>
                         <div class="card-body">
-                                      <div class="table-responsive">
-<div class="row">
-<div class="col-sm-12">
-<table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
-                                    <thead>
-                                        <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 64.75px;">Id</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">Username</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 30.1719px;">password</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 30.1719px;">Unit Kerja</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 67.8594px;">role</th>
-                                                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 55.7969px;">Action</th>
-                                    </thead>
-                                    <tbody>
-                                    <tr class="odd">
-                                          <?php foreach($data as $item) : ?>
-                                    <tr class="odd">
-                                            <td class="sorting_1"><?php echo $item['id']; ?></td>
-                                            <td><?php echo $item['username']; ?></td>
-                                            <td><?php echo $item['password']; ?></td>
-                                            <td><?php echo $item['Unit_kerja']; ?></td>
-                                            <td><?php echo $item['role']; ?></td> 
-                                             <td><?php echo"<a href='javascript:hapusdata(".$item['id'].")'><button class='btn btn-danger'>Hapus</button></a>";?> </td>
+<div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                  <thead>
+                                        <tr role="row">
+                                        <th >Kode Pinjam</th>
+                                        <th >Kode barang</th>
+                                        <th >No_identitas</th>
+                                        <th >Jumlah barang</th>
+                                        <th>Tanggal pinjam</th>
+                                        <th>Tanggal Kembali </th>
+                                        <th>Status </th>
+                                        <th>Keperluan </th>
 
                                         </tr>
-                                     <?php endforeach; ?></tbody>
-                                        </tr></tbody>
-                                </table></div></div>
-                                 </div>
+                                       
+                                    </thead>
+                                    <tbody> 
+                                        
+                                    <tr class="odd">
+                                    <?php
+                                    if (mysqli_num_rows($resultKembali) > 0) {
+                            while($row = mysqli_fetch_assoc($resultKembali)) {
+                                echo "<tr>
+                                        <td>{$row['Kode_pinjam']}</td>
+                                        <td>{$row['kode_barang']}</td>
+                                        <td>{$row['no_identitas']}</td>
+                                        <td>{$row['Jumlah_barang']}</td>
+                                        <td>{$row['tanggal_pinjam']}</td>
+                                        <td>{$row['tanggal_kembali']}</td>
+                                        <td>{$row['status']}</td>
+                                        <td>{$row['keperluan']}</td>
+                                     </tr>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='8'>Tidak ada barang yang belum kembali</td></tr>";
+                                    }
+                                             ?>
+                                        </tr> 
+                                        
+                <!-- /.container-fluid -->
+<!--Edit modal-->
+
+</div></div>
+        </div>
                     </div>
 </div>
-         
-                            </div>
+</div>
+                                  
+                                    </tbody>
+                                </table></div></div></div>
+                          
                         </div>
-                <!-- /.container-fluid -->
-
+                        </div>
+<!--Edit modal-->
             </div>
             <!-- End of Main Content -->
 
@@ -245,12 +243,18 @@ session_start();
             </div>
         </div>
     </div>
-      <script language="JavaScript" type="text/javascript">
-                                 function hapusdata(id){
-                                 if (confirm("apakah anda yakin akan menghapus data ini?")){
-                                window.location.href = 'delete_adm.php?id=' +id;
+
+  <script language="JavaScript" type="text/javascript">
+  function hapusdata(id){
+        if (confirm("apakah anda yakin akan menghapus data ini?")){
+        window.location.href = 'delete_brg.php?id=' +id;
                                 }
-                                }
+                        }
+    function kembalikanBarang(id,jumlah,kd){
+      if(confirm("Kembalikan Barang")){
+        window.location.href ="kembalikan_barang.php?id=" +id+"&Jumlah_barang="+jumlah+"&kd="+kd;
+      }
+    }
                             </script>
 
     <!-- Bootstrap core JavaScript-->
@@ -262,6 +266,7 @@ session_start();
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
 

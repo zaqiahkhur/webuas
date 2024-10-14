@@ -76,10 +76,6 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                       
-
-                      
-
                         <!-- Nav Item - Messages -->
                     
 
@@ -115,10 +111,14 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
                     <h1 class="h3 mb-4 text-gray-800">Daftar Barang</h1>
                   <div class="card-body">
                             <div class="table-responsive">
-                                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length">
-                               </div></div>
-                                <div class="col-sm-12 col-md-6 "><div id="dataTable_filter" class="dataTables_filter">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add barang  </button>
+                                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_length" id="dataTable_length">
+                               </div>
+                               </div>
+                                <div class="col-sm-12 col-md-6 ">
+                                <div id="dataTable_filter" class="dataTables_filter">
+                                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="margin-top: 20px; margin-bottom: 20px;"> Add barang</button>    
                                 
 <!-- Modal  add barang -->
   <?php
@@ -141,6 +141,7 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
       </div>
       <div class="modal-body">
        <form action = "input_brg.php" method ="post">
+       
   <div class="form-row">
     <div class="form-group col-md-6">
        <label for="kodebarang">Kode Barang</label>
@@ -166,18 +167,24 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
 </div></div></div>
 <!-- end Modal add barang -->
 
-
-
-<div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+        <!-- Tabel barang -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Data Barang</h6>
+                        </div>
+                        <div class="card-body">
+                                      <div class="table-responsive">
+                              <div class="row">
+                              <div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                                     <thead>
-                                         <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 64.75px;">Kode Barang</th>
-                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">id</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">Nama barang</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 55.7969px;">Jumlah Barang</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 55.7969px;">Action</th>
-                                    </thead>
+                                    <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 64.75px;">Kode Barang</th>
+                                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">id</th>
+                                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">Nama barang</th>
+                                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 55.7969px;">Jumlah Barang</th>
+                                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 55.7969px;">Action</th>
+                              </thead>
                                     <tbody>
-                                           <?php foreach($data as $item) : ?>
+                                         <?php foreach($data as $item) : ?>
                                     <tr class="odd">
                                             <td class="sorting_1"><?php echo $item['Kode_barang']; ?></td>
                                             <td><?php echo $item['id']; ?></td>
@@ -186,8 +193,9 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
                                             <td><a href='' class='btn btn-warning' data-toggle="modal" data-target="#modal<?php echo "$item[id]";?>" data-target="#edit8">Edit</a> <?php echo"<a href='javascript:hapusdata(".$item['id'].")'><button class='btn btn-danger'>Hapus</button></a>";?></td>
                                             </tr>
                                              </td>
-                                        </tr>   
-                <!-- /.container-fluid -->
+                                    </tr>  
+                                      <!--end Tabel barang --> 
+                
 <!--Edit modal-->
 <div class="modal fade" id="modal<?php echo "$item[id]";?>" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
@@ -201,7 +209,7 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
       <div class="modal-body">
        <form action = "update_brg.php" method ="post" name="editbrg">
         <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
-       <?php var_dump($item['id']);?>
+       <!-- <?php var_dump($item['id']);?> -->
   <div class="form-row">
       <div class="form-group form-group-default">
      <label>Kode Barang</label>
@@ -225,13 +233,16 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
     </div>
   </div>
 </div>
-</div></div></div>
-                                   <?php endforeach; ?>
-                                    </tbody>
-                                </table></div></div></div>
-                          
+</div></div>
+</div>
                         </div>
-                        </div>
+                    </div>
+</div>
+       <?php endforeach; ?>
+          </tbody>
+              </table></div></div></div>  
+                  </div>
+                   </div>
 <!--Edit modal-->
             </div>
             <!-- End of Main Content -->

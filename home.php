@@ -4,6 +4,10 @@ $barang=jumlah();
 $peminjam=jumlahpinjam();
 $user=jumlahUser();
 $barang_terbanyak = getTopPinjam();
+$total_barang_sudah_kembali = getCountStatus("peminjaman", "kembali");
+$barang_belum_kembali = getCountStatus("peminjaman", "belum kembali");
+
+
 session_start();
 // $GetCoba1=cobaGet1();
 ?>
@@ -11,8 +15,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
+<head> 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -110,10 +113,29 @@ session_start();
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                 <center>   <h1 class="h3 mb-0 text-gray-800"><span style="text-transform:uppercase">Selamat datang Admin <?=$_SESSION['username']?> </span></h1>  </center>
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <div class="row">
+             
+<!-- card -->
+<div class="card" style="margin-top: 50px; margin-bottom: 50px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+    <div class="card-body">
+        <h5 class="card-title">
+            <center>
+                <h1 class="h3 mb-0 text-gray-800" style="padding-top: 20px;">
+                    <span style="text-transform:uppercase"> Hello <?=$_SESSION['username']?> </span>
+                </h1>
+            </center>
+        </h5>
+        <center>
+            <p class="card-text" style="padding-bottom: 20px;">
+                SELAMAT DATANG DI ADMIN PEMINJAMAN SMK BAKTI NUSANTARA 666
+            </p>
+        </center>
+    </div>
+</div>
+<!-- endcard -->
 
+                
+        
+            <div class="row">
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-4 col-md-8 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
@@ -139,10 +161,11 @@ session_start();
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                          <h5 class="card-title">Data Peminjam</h5>
+                                          <h5 class="card-title">Data User
+                                          </h5>
                                             <center><h4><?=$user['jumlah'] ?></h4></center>
                                             <p class="card-text">Jumlah peminjam saat ini</p>
-                                            <a href="peminjam.php" class="card-link">Lihat data peminjam</a>
+                                            <a href="admin.php" class="card-link">Lihat data peminjam</a>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -162,6 +185,40 @@ session_start();
                                         <center><h4><?=$peminjam['jumlah'] ?></h4></center>
                                         <p class="card-text">Jumlah peminjaman saat ini</p>
                                         <a href="peminjaman.php" class="card-link">Lihat data peminjaman</a>
+                                        </div>
+                                         <div class="col-auto">
+                                            <i class="fas fa-calendar-alt   fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                       <div class="col mr-2">
+                                        <h5 class="card-title">Barang belum kembali</h5>
+                                        <center><h4><?=$barang_belum_kembali?></h4></center>
+                                        <p class="card-text">Jumlah peminjaman saat ini</p>
+                                        <a href="peminjaman blmkembali.php" class="card-link">Lihat data peminjaman</a>
+                                        </div>
+                                         <div class="col-auto">
+                                            <i class="fas fa-calendar-alt   fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                          <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                       <div class="col mr-2">
+                                        <h5 class="card-title">Barang sudah kembali</h5>
+                                        <center><h4><?=$total_barang_sudah_kembali?></h4></center>
+                                        <p class="card-text">Jumlah peminjaman saat ini</p>
+                                        <a href="peminjaman sdhkembali.php" class="card-link">Lihat data peminjaman</a>
                                         </div>
                                          <div class="col-auto">
                                             <i class="fas fa-calendar-alt   fa-2x text-gray-300"></i>
