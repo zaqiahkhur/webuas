@@ -124,27 +124,34 @@ session_start();
       
       <div class="modal-body">
         <form action="input_adm.php" method="post">
-          <!-- Nama -->
-         
-            <div class="form-group ">
+          <!-- No Identitas -->
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="no_identitas">No Identitas</label>
+              <input type="text" class="form-control" name="no_identitas" required>
+            </div>
+
+            <!-- Nama -->
+            <div class="form-group col-md-6">
               <label for="nama">Nama</label>
               <input type="text" class="form-control" name="nama" required>
             </div>
-          
+          </div>
+
           <!-- Password -->
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="password">Password</label>
               <input type="password" class="form-control" name="password" required>
             </div>
-            
+
             <!-- Unit Kerja -->
             <div class="form-group col-md-6">
               <label for="unitkerja">Unit Kerja</label>
               <input type="text" class="form-control" name="unitkerja" required>
             </div>
           </div>
-          
+
           <!-- Role -->
           <div class="form-group">
             <label for="role">Role</label>

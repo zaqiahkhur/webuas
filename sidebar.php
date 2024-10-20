@@ -84,6 +84,11 @@ if($_SESSION['role']=="admin"):?>
     </div>
 </li>
 
+<li class="nav-item active">
+                <a class="nav-link" href="laporan.php">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Laporan Peminjaman </span></a>
+            </li>
             <!-- Nav Item - Tables -->
 
             <!-- Divider -->
