@@ -138,5 +138,6 @@ function getalldata($tablename)
         return $rows;
 }
 
+        
 
 ?>
