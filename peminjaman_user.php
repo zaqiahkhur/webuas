@@ -33,7 +33,7 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Peminjaman</title>
+    <title>Peminjaman User</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

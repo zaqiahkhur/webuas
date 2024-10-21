@@ -10,7 +10,7 @@ if($_SESSION['role']=="admin"):?>
             </a>
 
             <!-- Divider -->
-            
+            <hr class="sidebar-divider">
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
@@ -24,9 +24,9 @@ if($_SESSION['role']=="admin"):?>
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <!-- <div class="sidebar-heading">
-                Interface
-            </div> -->
+            <div class="sidebar-heading">
+                Menu Utama
+            </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
            <li class="nav-item">
@@ -49,9 +49,9 @@ if($_SESSION['role']=="admin"):?>
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <!-- <div class="sidebar-heading">
-                Addons
-            </div> -->
+            <div class="sidebar-heading">
+                Peminjaman
+            </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
@@ -124,7 +124,7 @@ if($_SESSION['role']=="admin"):?>
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Menu Utama
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -148,7 +148,7 @@ if($_SESSION['role']=="admin"):?>
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                Peminjaman
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->

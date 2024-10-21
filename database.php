@@ -138,6 +138,26 @@ function getalldata($tablename)
         return $rows;
 }
 
-        
+
+function getalldatalaporan($table, $dari = null, $sampai = null) {
+
+  global $koneksi;
+  // Query data peminjaman berdasarkan tanggal
+  if ($dari && $sampai) {
+    $query = "SELECT * FROM $table WHERE tanggal_pinjam BETWEEN '$dari' AND '$sampai'";
+  } else {
+    $query = "SELECT * FROM $table";
+  }
+
+  $result = mysqli_query($koneksi, $query);
+  $data = array();
+  while ($row = mysqli_fetch_assoc($result)) {
+    $data[] = $row;
+  }
+
+  mysqli_close($koneksi);
+  return $data;
+}
+    
 
 ?>

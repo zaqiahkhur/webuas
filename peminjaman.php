@@ -211,20 +211,6 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Data Peminjaman</h6>
                         </div>
-                        <form method="POST" action="cetak_laporan.php">
-    <div class="row g-3 align-items-center"> 
-        <div class="col-auto">
-            <label for="fromDate" class="form-label">Dari:</label>
-            <input type="date" class="form-control" id="fromDate" name="dari" placeholder="mm/dd/yyyy" required>
-        </div>
-        <div class="col-auto">
-            <label for="toDate" class="form-label">Sampai:</label>
-            <input type="date" class="form-control" id="toDate" name="sampai" placeholder="mm/dd/yyyy" required>
-        </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-success">Tampilkan</button>
-        </div>
-    </div>
 </form>
                         <div class="card-body">
                                       <div class="table-responsive">
