@@ -141,11 +141,10 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
       </div>
       <div class="modal-body">
        <form action = "input_brg.php" method ="post">
-       
   <div class="form-row">
     <div class="form-group col-md-6">
        <label for="kodebarang">Kode Barang</label>
-     <input type="text" class="form-control" name="kodepinjam" value="<?=$kodeBarang ?>" readonly>
+     <input type="text" class="form-control" name="kodebarang" value="<?=$kodeBarang?>" readonly>
     </div>
     <div class="form-group col-md-6">
       <label for="namabarang">Nama Barang</label>

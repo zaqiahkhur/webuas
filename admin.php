@@ -2,6 +2,13 @@
 require_once('database.php');
 $data=getalldata('admin');
 session_start();
+$query =mysqli_query($koneksi, "SELECT max(no_identitas) as kodeinden  from admin");
+$data2= mysqli_fetch_array($query);
+$noidentitas = $data2['kodeinden'];
+$urutan = (int) substr($noidentitas,3,3);
+$urutan++;
+$huruf = "NOIDEN";
+$noidentitas = $huruf . sprintf("%03s", $urutan);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -128,12 +135,12 @@ session_start();
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="no_identitas">No Identitas</label>
-              <input type="text" class="form-control" name="no_identitas" required>
+              <input type="text" class="form-control" name="no_identitas" value="<?=$noidentitas?>" readonly required>
             </div>
 
             <!-- Nama -->
             <div class="form-group col-md-6">
-              <label for="nama">Nama</label>
+              <label for="nama">Nama-Kelas</label>
               <input type="text" class="form-control" name="nama" required>
             </div>
           </div>
@@ -180,8 +187,9 @@ session_start();
 <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                                     <thead>
                                         <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 64.75px;">Id</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">Username</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 30.1719px;">password</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">No Identitas</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">Username</th>
+                                   <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 30.1719px;">password</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 30.1719px;">Unit Kerja</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 67.8594px;">role</th>
                                                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 55.7969px;">Action</th>
@@ -191,6 +199,7 @@ session_start();
                                           <?php foreach($data as $item) : ?>
                                     <tr class="odd">
                                             <td class="sorting_1"><?php echo $item['id']; ?></td>
+                                                         <td><?php echo $item['no_identitas']; ?></td>
                                             <td><?php echo $item['username']; ?></td>
                                             <td><?php echo $item['password']; ?></td>
                                             <td><?php echo $item['Unit_kerja']; ?></td>

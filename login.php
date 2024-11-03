@@ -14,8 +14,7 @@ if(isset($_POST['masuk'])){
             header("location:home_user.php");
           }
     }else{  
-      $_SESSION['eror'] ='<b>username</b> atau <b>password</b> yang anda masukan salah';  
-        header("location:login.php");
+     echo "<script>alert('Username atau Password salah');location='login.php';</script>";
     }
 }
 
@@ -38,7 +37,7 @@ if(isset($_POST['masuk'])){
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
   </head>
 
-  <body class="bg-gradient-info">
+  <body class="" style="background-color: #8C3061;">
     <div class="container">
       <!-- Outer Row -->
       <div class="row justify-content-center">
@@ -47,20 +46,22 @@ if(isset($_POST['masuk'])){
             <div class="card-body p-0">
               <!-- Nested Row within Card Body -->
               <div class="row">
-                <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                <div class="col-lg-6 d-none d-lg-block bg-login-image">
+               <center><img src="img/logo.jpeg" alt="" style="margin: 45px;"></center> 
+                </div>
                 <div class="col-lg-6">
                   <div class="p-5">
                     <div class="text-center">
                       <h1 class="h4 text-gray-900 mb-4">Peminjaman Baknus</h1>
                     </div>
-                    <form action="" method="POST">
+                    <form action=""  method="POST">
                       <div class="form-group">
                         <input type="username" class="form-control form-control-user" name="username" aria-describedby="emailHel" placeholder="Masukan Username">
                       </div>
                       <div class="form-group">
                         <input type="password" class="form-control form-control-user" name="password" placeholder="Password">
                       </div>
-                      <button type="submit" name="masuk" class="btn btn-primary btn-lg btn-block">Login</button>
+                      <button type="submit" name="masuk" class="btn btn-lg btn-block" style="background-color: #8C3061; color: white;">Login</button>
                       <hr>
                     </form>
                     <hr>

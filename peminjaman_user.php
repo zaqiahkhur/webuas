@@ -141,12 +141,23 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
   <input type="text" class="form-control" name="kodepinjam" value="<?=$kodeBarangpinjam ?>" readonly>
   <label for="floatingInput">Kode pinjam</label>
 </div>    
-      <div class="form-floating mb-3">
- <input type="text" class="form-control" name="kodebarang" >
-  <label for="floatingInput">Kode barang</label>
-</div> 
+     <div class="form-floating mb-3">
+                                    <select name="kodebarang" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                        <option selected>--PILIH--</option>
+                                        <?php
+                                        if (mysqli_num_rows($result_kode) > 0) {
+                                            while ($row = mysqli_fetch_assoc($result_kode)) {
+                                                echo "
+                                                        <option value='" . $row['Kode_barang'] . "'>" . $row['Kode_barang'] . " - " . $row['nama_barang'] . "</option>
+                                                    ";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                    <label for="floatingSelect">Kode barang</label>
+                                </div>
     <div class="form-floating mb-3">
-  <input type="text" class="form-control" name="noiden" >
+  <input type="text" class="form-control" value="<?=$_SESSION['no_identitas']?>" readonly   name="noiden" >
   <label for="noiden">No identitas</label>
 </div>  
    <div class="form-floating mb-3">
@@ -163,9 +174,8 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
   <input type="date"  class="form-control" name="tglkembali" value="<?= isset($id['tanggal_kembali']) ? date('Y-m-d') : '' ?>" min="<?= date('Y-m-d') ?>">
   <label for="tglkembali">Tanggal Kembali</label>
   </div>
-
-  <div class="form-floating mb-3">
-      <input type="text" class="form-control" name="status" >
+ <div class="form-floating mb-3">
+   <input type="text" class="form-control" name="status" value="Belum Kembali" readonly >
     <label for="status">Status</label>
   </div>
   <div class="form-floating mb-3">

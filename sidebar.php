@@ -1,11 +1,11 @@
 <?php
 if($_SESSION['role']=="admin"):?>
 
-<ul class="navbar-nav text-light bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="f1 navbar-nav text-light sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #8C3061; border-radius: 20px;">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <img src="img/logo.jpeg" alt="" width="35" >
+            <img src="img/logoo.jpeg" alt="" width="50" >
                 <div class="sidebar-brand-text mx-3">Peminjaman Barang</div>
             </a>
 
@@ -101,11 +101,11 @@ if($_SESSION['role']=="admin"):?>
 
         </ul>
         <?php else:?>
-        <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav text-light sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #8C3061; border-radius: 20px;">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <img src="img/logo.jpeg" alt="" width="35" >
+            <img src="img/logoo.jpeg" alt="" width="50" >
                 <div class="sidebar-brand-text mx-3">Peminjaman Barang</div>
             </a>
 

@@ -6,7 +6,8 @@ $sql_users = "SELECT no_identitas, username FROM admin WHERE role = 'member'";
 $result_users = mysqli_query($koneksi, $sql_users);
 $barang ="SELECT Kode_barang, nama_barang FROM barang";
 $result_kode = mysqli_query($koneksi, $barang);
-$sqlKembali = "SELECT * FROM peminjaman WHERE status = 'kembali'";
+$sqlKembali = "SELECT peminjaman.id, peminjaman.Jumlah_barang, peminjaman.keperluan,peminjaman.kode_barang,barang.nama_barang,peminjaman.Kode_pinjam,peminjaman.no_identitas,admin.username,peminjaman.status,peminjaman.tanggal_kembali,peminjaman.tanggal_pinjam FROM peminjaman INNER JOIN barang ON
+ barang.Kode_barang = peminjaman.kode_barang INNER JOIN admin ON peminjaman.no_identitas = admin.no_identitas;";
 $resultKembali = mysqli_query($koneksi, $sqlKembali);
 
 $sqlBelumKembali = "SELECT * FROM peminjaman WHERE status = 'belum kembali'";
@@ -152,7 +153,9 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
                                         <tr role="row">
                                         <th >Kode Pinjam</th>
                                         <th >Kode barang</th>
+                                        <th >Nama Barang</th>
                                         <th >No_identitas</th>
+                                        <th >Username</th>
                                         <th >Jumlah barang</th>
                                         <th>Tanggal pinjam</th>
                                         <th>Tanggal Kembali </th>
@@ -171,7 +174,9 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
                                 echo "<tr>
                                         <td>{$row['Kode_pinjam']}</td>
                                         <td>{$row['kode_barang']}</td>
+                                         <td>{$row['nama_barang']}</td>
                                         <td>{$row['no_identitas']}</td>
+                                         <td>{$row['username']}</td>
                                         <td>{$row['Jumlah_barang']}</td>
                                         <td>{$row['tanggal_pinjam']}</td>
                                         <td>{$row['tanggal_kembali']}</td>
