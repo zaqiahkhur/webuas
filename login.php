@@ -52,19 +52,18 @@ if(isset($_POST['masuk'])){
                 <div class="col-lg-6">
                   <div class="p-5">
                     <div class="text-center">
-                      <h1 class="h4 text-gray-900 mb-4">Peminjaman Baknus</h1>
+                      <h1 class="h4 text-gray-900 mb-4" style="text-transform:uppercase;  font-weight: bold;" >Peminjaman Baknus</h1>
                     </div>
                     <form action=""  method="POST">
                       <div class="form-group">
-                        <input type="username" class="form-control form-control-user" name="username" aria-describedby="emailHel" placeholder="Masukan Username">
+                        <input type="username"  class="form-control form-control-user" style="border-radius: 20px; height: 50px;   font-family: 'Roboto', Times New Roman, sans-serif;" name="username" aria-describedby="emailHel" placeholder="Masukan Username">
                       </div>
                       <div class="form-group">
-                        <input type="password" class="form-control form-control-user" name="password" placeholder="Password">
+                        <input type="password" class="form-control form-control-user" style="border-radius: 20px; height: 50px; font-family: 'Roboto', Times New Roman, sans-serif;"  name="password" placeholder="Password">
                       </div>
                       <button type="submit" name="masuk" class="btn btn-lg btn-block" style="background-color: #8C3061; color: white;">Login</button>
                       <hr>
                     </form>
-                    <hr>
                   </div>
                 </div>
               </div>

@@ -74,20 +74,10 @@ session_start();
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
-                       
-
-                      
-
                         <!-- Nav Item - Messages -->
-                    
-
                         <div class="topbar-divider d-none d-sm-block"></div>
-
                         <!-- Nav Item - User Information -->
-                        
                         <li class="nav-item dropdown no-arrow">
-                        
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="img-profile rounded-circle"
@@ -115,12 +105,12 @@ session_start();
                     <!-- Page Heading -->
              
 <!-- card -->
-<div class="card" style="margin-top: 50px; margin-bottom: 50px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-    <div class="card-body">
+<div class="card" style="margin-top: 50px; margin-bottom: 50px;  border-radius: 20px;   background: linear-gradient(to bottom, #A87676, #E1ACAC);   font-weight: bold;color: white; ">
+    <div class="card-body" >
         <h5 class="card-title">
             <center>
                 <h1 class="h3 mb-0 text-gray-800" style="padding-top: 20px;">
-                    <span style="text-transform:uppercase"> Hello <?=$_SESSION['username']?> </span>
+                    <span style="text-transform:uppercase;  color: white;   font-weight: bold;"> Hello <?=$_SESSION['username']?> </span>
                 </h1>
             </center>
         </h5>
@@ -138,7 +128,7 @@ session_start();
             <div class="row">
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-4 col-md-8 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card border-left-primary shadow h-100 py-2" style="border-radius: 20px;">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
@@ -157,7 +147,7 @@ session_start();
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card border-left-success shadow h-100 py-2 "style="border-radius: 20px;">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
@@ -177,7 +167,7 @@ session_start();
 
                         <!-- Earnings (Monthly) Card Example -->
                       <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card border-left-info shadow h-100 py-2"style="border-radius: 20px;">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                        <div class="col mr-2">
@@ -194,7 +184,7 @@ session_start();
                             </div>
                         </div>
                          <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card border-left-info shadow h-100 py-2"style="border-radius: 20px;">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                        <div class="col mr-2">
@@ -211,7 +201,7 @@ session_start();
                             </div>
                         </div>
                           <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card border-left-info shadow h-100 py-2" style="border-radius: 20px;">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                        <div class="col mr-2">
@@ -234,13 +224,13 @@ session_start();
         </div>
 
         <div class=" col-lg-12">
-                            <div class="card shadow mb-4">
+                            <div class="card shadow mb-4" >
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-black">Banyak Barang di Pinjam </h6>
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body ">
+                                <div class="card-body "style="border-radius: 20px;">
                                     <div class="chart-area"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand">
                                     <div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class="">
                                     <div class="col mr-2">

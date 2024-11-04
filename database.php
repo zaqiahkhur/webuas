@@ -99,10 +99,10 @@ function getalldata($tablename)
             pm.status='kembali'
              WHERE id = '$id'";
             $excecutionTglkembali=mysqli_query($koneksi,$updateTanggalKembali);
-            
-            $updatestok="UPDATE barang SET Jumlah_barang  = Jumlah_barang+'$jumlah' WHERE kode_barang = '$kd'";
+            $kdUbah = str_replace('BRG','',$kd);
+            $updatestok="UPDATE barang SET Jumlah_barang  = Jumlah_barang+'$jumlah' WHERE kode_barang = '$kdUbah'";
             $excecutionUpdateStock=mysqli_query($koneksi,$updatestok);
-            
+            echo $kdUbah;
             return $excecutionTglkembali;
           }
           function cek_login($username,$password)

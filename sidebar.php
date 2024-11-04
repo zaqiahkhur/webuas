@@ -1,7 +1,7 @@
 <?php
 if($_SESSION['role']=="admin"):?>
 
-<ul class="f1 navbar-nav text-light sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #8C3061; border-radius: 20px;">
+<ul class="f1 navbar-nav text-light sidebar sidebar-dark accordion" id="accordionSidebar" style=" background: linear-gradient(to bottom, #A87676, #FFD0D0);  border-radius: 20px;">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -83,12 +83,6 @@ if($_SESSION['role']=="admin"):?>
         </div>
     </div>
 </li>
-
-<li class="nav-item active">
-                <a class="nav-link" href="laporan.php">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Laporan Peminjaman </span></a>
-            </li>
             <!-- Nav Item - Tables -->
 
             <!-- Divider -->
@@ -101,7 +95,7 @@ if($_SESSION['role']=="admin"):?>
 
         </ul>
         <?php else:?>
-        <ul class="navbar-nav text-light sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #8C3061; border-radius: 20px;">
+        <ul class="navbar-nav text-light sidebar sidebar-dark accordion" id="accordionSidebar" style="background: linear-gradient(to bottom, #A87676, #FFD0D0);  border-radius: 20px;">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">

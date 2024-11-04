@@ -31,6 +31,7 @@ $noidentitas = $huruf . sprintf("%03s", $urutan);
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
@@ -116,7 +117,7 @@ $noidentitas = $huruf . sprintf("%03s", $urutan);
                                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length">
                                </div></div>
                                 <div class="col-sm-12 col-md-6"><div id="dataTable_filter" class="dataTables_filter">  
-                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="margin-top: 20px; margin-bottom: 20px;"> Add User</button>
+                                  <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="margin-top: 20px; margin-bottom: 20px; background: linear-gradient(to bottom, #674188, #D4BEE4); border:none; color:white;"> Add User</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -188,7 +189,7 @@ $noidentitas = $huruf . sprintf("%03s", $urutan);
                                     <thead>
                                         <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 64.75px;">Id</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">No Identitas</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">Username</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">Username</th>
                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 30.1719px;">password</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 30.1719px;">Unit Kerja</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 67.8594px;">role</th>
@@ -204,7 +205,7 @@ $noidentitas = $huruf . sprintf("%03s", $urutan);
                                             <td><?php echo $item['password']; ?></td>
                                             <td><?php echo $item['Unit_kerja']; ?></td>
                                             <td><?php echo $item['role']; ?></td> 
-                                             <td><?php echo"<a href='javascript:hapusdata(".$item['id'].")'><button class='btn btn-danger'>Hapus</button></a>";?> </td>
+                                             <td><?php echo"<a href='javascript:hapusdata(".$item['id'].")'><button class='btn btn-danger'><i class='fa-solid fa-trash'></i></button></a>";?> </td>
 
                                         </tr>
                                      <?php endforeach; ?></tbody>

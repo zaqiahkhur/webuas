@@ -43,6 +43,7 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
@@ -122,7 +123,7 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
                                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length">
                               </div></div>
                                 <div class="col-sm-12 col-md-6"><div id="dataTable_filter" class="dataTables_filter">
-                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="margin-top: 20px; margin-bottom: 20px;"> Add Peminjaman</button>
+                                 <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="margin-top: 20px; margin-bottom: 20px; background: linear-gradient(to bottom, #674188, #D4BEE4); border:none; color:white;"> Add Peminjaman</button>
                                 
 <!-- Modal  add barang -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -141,7 +142,7 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
   <input type="text" class="form-control" name="kodepinjam" value="<?=$kodeBarangpinjam?>" readonly>
   <label for="floatingInput">Kode pinjam</label>
 </div>  
-   <div class="form-floating mb-3">
+                                <div class="form-floating mb-3">
                                     <select name="kodebarang" class="form-select" id="floatingSelect" aria-label="Floating label select example">
                                         <option selected>--PILIH--</option>
                                         <?php
@@ -157,7 +158,7 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
                                     <label for="floatingSelect">Kode barang</label>
                                 </div>
 
-<div class="form-floating mb-3">
+                                <div class="form-floating mb-3">
                                     <select name="noiden" class="form-select" id="floatingSelect" aria-label="Floating label select example">
                                         <option selected>--PILIH--</option>
                                         <?php
@@ -218,11 +219,11 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
             <input type="date" class="form-control" id="fromDate" name="dari" placeholder="mm/dd/yyyy" required>
         </div>
         <div class="col-auto">
-            <label for="toDate" class="form-label">Sampai:</label>
+            <label for="toDate" class="form-label">Sampai:</label>  
             <input type="date" class="form-control" id="toDate" name="sampai" placeholder="mm/dd/yyyy" required>
         </div>
         <div class="col-auto">
-            <button type="submit" class="btn btn-success">Cetak</button>
+            <button type="submit" class="btn btn-success"><i class="fa-solid fa-print"></i></button>
         </div>
     </div>
 </form>
@@ -256,7 +257,7 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
                                             <td><?php echo $item['tanggal_kembali']; ?></td>
                                             <td><?php echo $item['status']; ?></td>
                                             <td><?php echo $item['keperluan']; ?></td>
-                                             <td><a href='' class='btn btn-warning' data-toggle="modal" data-target="#modal<?php echo "$item[id]";?>" data-target="#edit8">Edit</a> 
+                                             <td><a href='' class='btn btn-warning' data-toggle="modal" data-target="#modal<?php echo "$item[id]";?>" data-target="#edit8"><i class="fa-solid fa-pen"></i></a> 
                                              <?php echo "<a href='javascript:kembalikanBarang(".$item['id']." ,".$item['Jumlah_barang'].",".$item['kode_barang'].")'><button type='button' class='btn btn-success'>Kembalikan</button></a>" ; ?>
                                             
                                             </tr>
@@ -279,11 +280,11 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
   <div class="form-row">
     <div class="form-group col-md-6">
        <label for="kodepinjam">Kode pinjam</label>
-      <input type="text" class="form-control" name="kodepinjam"  placeholder="Masukkan Kode Barang" value="<?php echo $item['Kode_pinjam']; ?>" required>
+      <input type="text" class="form-control" name="kodepinjam"  placeholder="Masukkan Kode Barang" value="<?php echo $item['Kode_pinjam']; ?>" readonly required>
     </div>
     <div class="form-group col-md-6">
       <label for="kodebarang">Kode Barang</label>
-      <input type='text' class='form-control' name='kodebarang' placeholder="Masukkan Kode Barang" value="<?php echo $item['kode_barang']; ?>" required >
+      <input type='text' class='form-control' name='kodebarang' placeholder="Masukkan Kode Barang" value="<?php echo $item['kode_barang']; ?>" readonly required >
     </div>
   </div>
    <div class="form-row">
@@ -383,9 +384,10 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
                                 }
                         }
     function kembalikanBarang(id,jumlah,kd){
-      if(confirm("Kembalikan Barang")){
-        window.location.href ="kembalikan_barang.php?id=" +id+"&Jumlah_barang="+jumlah+"&kd="+kd;
-      }
+    if(confirm("Kembalikan Barang")){
+        $kdubah = str_replace('BRG', '', kd);
+        window.location.href ="kembalikan_barang.php?id=" +id+"&Jumlah_barang="+jumlah+"&kd="+$kdubah;
+        }
     }
                             </script>
 

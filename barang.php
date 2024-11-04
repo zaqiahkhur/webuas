@@ -3,15 +3,15 @@ require_once('database.php');
 $data=getalldata('barang');
 session_start();
 
-$query =mysqli_query($koneksi, "SELECT max(Kode_barang) as kodeTerbesar  from barang");
-$data2= mysqli_fetch_array($query);
-$kodeBarang = $data2['kodeTerbesar'];
-$urutan = (int) substr($kodeBarang,3,3);
-$urutan++;
-$huruf = "BRG";
-$kodeBarang = $huruf . sprintf("%03s", $urutan);
+  $query =mysqli_query($koneksi, "SELECT max(Kode_barang) as kodeTerbesar  from barang");
+  $data2= mysqli_fetch_array($query);
+  $kodeBarang = $data2['kodeTerbesar'];
+  $urutan = (int) substr($kodeBarang,3,3);
+  $urutan++;
+  $huruf = "BRG";
+  $kodeBarang = $huruf . sprintf("%03s", $urutan);
 
-?>
+  ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +34,8 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 
 </head>
 
@@ -118,7 +120,7 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
                                </div>
                                 <div class="col-sm-12 col-md-6 ">
                                 <div id="dataTable_filter" class="dataTables_filter">
-                                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="margin-top: 20px; margin-bottom: 20px;"> Add barang</button>    
+                                   <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="margin-top: 20px; margin-bottom: 20px; background: linear-gradient(to bottom, #674188, #D4BEE4); border:none; color:white;"> Add barang</button>    
                                 
 <!-- Modal  add barang -->
   <?php
@@ -189,7 +191,7 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
                                             <td><?php echo $item['id']; ?></td>
                                             <td><?php echo $item['nama_barang']; ?></td>
                                             <td><?php echo $item['Jumlah_barang']; ?></td>
-                                            <td><a href='' class='btn btn-warning' data-toggle="modal" data-target="#modal<?php echo "$item[id]";?>" data-target="#edit8">Edit</a> <?php echo"<a href='javascript:hapusdata(".$item['id'].")'><button class='btn btn-danger'>Hapus</button></a>";?></td>
+                                            <td><a href='' class='btn btn-warning' data-toggle="modal" data-target="#modal<?php echo "$item[id]";?>" data-target="#edit8"><i class="fa-solid fa-pen"></i></a> <?php echo"<a href='javascript:hapusdata(".$item['id'].")'><button class='btn btn-danger'><i class='fa-solid fa-trash'></i></button></a>";?></td>
                                             </tr>
                                              </td>
                                     </tr>  
@@ -212,7 +214,7 @@ $kodeBarang = $huruf . sprintf("%03s", $urutan);
   <div class="form-row">
       <div class="form-group form-group-default">
      <label>Kode Barang</label>
-    <input id="kodeBarang" type="text" name="kodeBarang" class="form-control" placeholder="Masukkan Kode Barang" value="<?php echo $item['Kode_barang']; ?>" required>
+    <input id="kodeBarang" type="text" name="kodeBarang" class="form-control" placeholder="Masukkan Kode Barang" value="<?php echo $item['Kode_barang']; ?>" readonly required>
     </div>
     <div class="form-group col-md-6">
       <label for="namabarang">Nama Barang</label>
