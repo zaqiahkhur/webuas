@@ -18,27 +18,27 @@ function getalldata($tablename)
             $hasil=mysqli_query($koneksi, "select * from $tablename where id = $id");
             return $hasil;
           }
-            function updatedata($tabel,$kode,$nama,$jml,$id)
+   function updatedata($tabel,$kode,$nama,$jml,$id)
           {
             global $koneksi;
             $sql = "UPDATE $tabel SET Kode_barang = '$kode', nama_barang = '$nama' , Jumlah_barang = '$jml' WHERE id = '$id'";
             $hasil=mysqli_query($koneksi,$sql);
             return $hasil;
           } 
-             function updatepeminjaman($tabel,$kodep,$kodeb,$noiden,$jml,$tglp,$tglk,$status,$keperluan,$id)
+  function updatepeminjaman($tabel,$kodep,$kodeb,$noiden,$jml,$tglp,$tglk,$status,$keperluan,$id)
           {
-            global $koneksi;
-            $sql = "UPDATE $tabel SET Kode_pinjam = '$kodep', kode_barang = '$kodeb' , no_identitas = '$noiden' , Jumlah_barang = '$jml' , tanggal_pinjam = '$tglp' ,
-             tanggal_kembali = '$tglk' , status = '$status' , keperluan = '$keperluan' WHERE id = '$id'";
-            $hasil=mysqli_query($koneksi,$sql);
-            return $hasil;
+              global $koneksi;
+              $sql = "UPDATE $tabel SET Kode_pinjam = '$kodep', kode_barang = '$kodeb' , no_identitas = '$noiden' , Jumlah_barang = '$jml' , tanggal_pinjam = '$tglp' ,
+              tanggal_kembali = '$tglk' , status = '$status' , keperluan = '$keperluan' WHERE id = '$id'";
+              $hasil=mysqli_query($koneksi,$sql);
+              return $hasil;
           } 
-            function updatepeminjam($tabel,$noiden,$nama,$kelas,$jml,$jrs,$id)
+  function updatepeminjam($tabel,$noiden,$nama,$kelas,$jml,$jrs,$id)
           {
-            global $koneksi;
-            $sql = "UPDATE `$tabel` SET `No_identitas`='$noiden',`Nama`='$nama',`Kelas`='$kelas',`Jurusan`='$jrs' WHERE id ='id'";
-            $hasil=mysqli_query($koneksi,$sql);
-            return $hasil;
+              global $koneksi;
+              $sql = "UPDATE `$tabel` SET `No_identitas`='$noiden',`Nama`='$nama',`Kelas`='$kelas',`Jurusan`='$jrs' WHERE id ='id'";
+              $hasil=mysqli_query($koneksi,$sql);
+              return $hasil;
           } 
             function Delete($tablename,$id)
           {

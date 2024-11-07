@@ -84,6 +84,9 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
+                       <li class="nav-item d-flex align-items-center">
+                              <span class="mr-2">Hello <?=$_SESSION['username']?></span>
+                          </li>
                         <!-- Nav Item - Messages -->
                     
 
@@ -122,7 +125,7 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
                                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length">
                               </div></div>
                                 <div class="col-sm-12 col-md-6"><div id="dataTable_filter" class="dataTables_filter">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Peminjaman  </button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="background: linear-gradient(to bottom, #9B7EBD, #D4BEE4); border:none;">Add Peminjaman  </button>
                                 
 <!-- Modal  add barang -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

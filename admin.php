@@ -74,11 +74,9 @@ $noidentitas = $huruf . sprintf("%03s", $urutan);
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
-                       
-
-                      
-
+                       <li class="nav-item d-flex align-items-center">
+                              <span class="mr-2">Hello <?=$_SESSION['username']?></span>
+                          </li>
                         <!-- Nav Item - Messages -->
                     
 
@@ -86,6 +84,7 @@ $noidentitas = $huruf . sprintf("%03s", $urutan);
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
+                          
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="img-profile rounded-circle"
@@ -117,7 +116,7 @@ $noidentitas = $huruf . sprintf("%03s", $urutan);
                                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length">
                                </div></div>
                                 <div class="col-sm-12 col-md-6"><div id="dataTable_filter" class="dataTables_filter">  
-                                  <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="margin-top: 20px; margin-bottom: 20px; background: linear-gradient(to bottom, #674188, #D4BEE4); border:none; color:white;"> Add User</button>
+                                  <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="margin-top: 20px; margin-bottom: 20px; background: linear-gradient(to bottom, #9B7EBD, #D4BEE4); font-weight: bold; border:none; color:white;"> Add User</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -138,13 +137,20 @@ $noidentitas = $huruf . sprintf("%03s", $urutan);
               <label for="no_identitas">No Identitas</label>
               <input type="text" class="form-control" name="no_identitas" value="<?=$noidentitas?>" readonly required>
             </div>
-
-            <!-- Nama -->
-            <div class="form-group col-md-6">
-              <label for="nama">Nama-Kelas</label>
+              <div class="form-group col-md-6">
+              <label for="namal">Nama lengkap</label>
               <input type="text" class="form-control" name="nama" required>
             </div>
           </div>
+            <div class="row">
+             <div class="form-group col-md-6">
+              <label for="nama">Username</label>
+              <input type="text" class="form-control" name="nama" required>
+            </div>
+          </div>
+            </div>
+            <!-- Nama -->
+           
 
           <!-- Password -->
           <div class="form-row">
@@ -187,8 +193,9 @@ $noidentitas = $huruf . sprintf("%03s", $urutan);
 <div class="col-sm-12">
 <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                                     <thead>
-                                        <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 64.75px;">Id</th>
+                                        <tr role="row">
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">No Identitas</th>
+                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">Nama Lengkap</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">Username</th>
                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 30.1719px;">password</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 30.1719px;">Unit Kerja</th>
@@ -199,8 +206,9 @@ $noidentitas = $huruf . sprintf("%03s", $urutan);
                                     <tr class="odd">
                                           <?php foreach($data as $item) : ?>
                                     <tr class="odd">
-                                            <td class="sorting_1"><?php echo $item['id']; ?></td>
+                                          
                                                          <td><?php echo $item['no_identitas']; ?></td>
+                                            <td><?php echo $item['nama_lengkap']; ?></td>       
                                             <td><?php echo $item['username']; ?></td>
                                             <td><?php echo $item['password']; ?></td>
                                             <td><?php echo $item['Unit_kerja']; ?></td>

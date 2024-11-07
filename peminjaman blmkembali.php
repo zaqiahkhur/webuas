@@ -90,6 +90,9 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
+                         <li class="nav-item d-flex align-items-center">
+                              <span class="mr-2">Hello <?=$_SESSION['username']?></span>
+                          </li>
                         <!-- Nav Item - Messages -->
                     
 

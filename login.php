@@ -37,7 +37,7 @@ if(isset($_POST['masuk'])){
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
   </head>
 
-  <body class="" style="background-color: #8C3061;">
+  <body class="" style="background: linear-gradient(to bottom, #9B7EBD, #D4BEE4);">
     <div class="container">
       <!-- Outer Row -->
       <div class="row justify-content-center">
@@ -52,7 +52,7 @@ if(isset($_POST['masuk'])){
                 <div class="col-lg-6">
                   <div class="p-5">
                     <div class="text-center">
-                      <h1 class="h4 text-gray-900 mb-4" style="text-transform:uppercase;  font-weight: bold;" >Peminjaman Baknus</h1>
+                      <h1 class="h4 text-gray-900 mb-4" style="text-transform:uppercase;  font-weight: bold;" >Peminjaman Barang </h1>
                     </div>
                     <form action=""  method="POST">
                       <div class="form-group">
@@ -61,7 +61,7 @@ if(isset($_POST['masuk'])){
                       <div class="form-group">
                         <input type="password" class="form-control form-control-user" style="border-radius: 20px; height: 50px; font-family: 'Roboto', Times New Roman, sans-serif;"  name="password" placeholder="Password">
                       </div>
-                      <button type="submit" name="masuk" class="btn btn-lg btn-block" style="background-color: #8C3061; color: white;">Login</button>
+                      <button type="submit" name="masuk" class="btn btn-lg btn-block" style="background: linear-gradient(to bottom, #9B7EBD, #D4BEE4); color: white;">Login</button>
                       <hr>
                     </form>
                   </div>

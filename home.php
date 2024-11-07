@@ -73,7 +73,11 @@ session_start();
                     </form>
 
                     <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto">   
+                         <li class="nav-item d-flex align-items-center">
+                              <span class="mr-2">Hello <?=$_SESSION['username']?></span>
+                          </li>
+
                         <!-- Nav Item - Messages -->
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <!-- Nav Item - User Information -->
@@ -105,7 +109,7 @@ session_start();
                     <!-- Page Heading -->
              
 <!-- card -->
-<div class="card" style="margin-top: 50px; margin-bottom: 50px;  border-radius: 20px;   background: linear-gradient(to bottom, #A87676, #E1ACAC);   font-weight: bold;color: white; ">
+<div class="card" style="margin-top: 50px; margin-bottom: 50px;  border-radius: 20px;   background: linear-gradient(to bottom, #9B7EBD, #D4BEE4);   font-weight: bold;color: white; ">
     <div class="card-body" >
         <h5 class="card-title">
             <center>
@@ -116,7 +120,7 @@ session_start();
         </h5>
         <center>
             <p class="card-text" style="padding-bottom: 20px;">
-                SELAMAT DATANG DI ADMIN PEMINJAMAN SMK BAKTI NUSANTARA 666
+                SELAMAT DATANG DI ADMIN PEMINJAMAN BARANG SMK BAKTI NUSANTARA 666
             </p>
         </center>
     </div>
@@ -222,32 +226,6 @@ session_start();
             <!-- End of Main Content -->
 
         </div>
-
-        <div class=" col-lg-12">
-                            <div class="card shadow mb-4" >
-                                <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-black">Banyak Barang di Pinjam </h6>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body "style="border-radius: 20px;">
-                                    <div class="chart-area"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand">
-                                    <div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class="">
-                                    <div class="col mr-2">
-                                    <?php foreach ($barang_terbanyak as $top) : ?>
-                                        <ul class="list-group list-group-flush">
-                                         <li class="list-group-item"><h6><?= $top['nama_barang'] ?></h6></li>  
-                                          </ul>
-                                          <!-- Menggunakan kunci 'nama' untuk mengakses nama barang -->
-                                        <?php endforeach;?>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
         <!-- End of Content Wrapper -->
 
     </div>

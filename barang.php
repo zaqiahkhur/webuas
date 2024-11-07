@@ -77,6 +77,9 @@ session_start();
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
+                       <li class="nav-item d-flex align-items-center">
+                              <span class="mr-2">Hello <?=$_SESSION['username']?></span>
+                          </li> 
 
                         <!-- Nav Item - Messages -->
                     
@@ -120,7 +123,7 @@ session_start();
                                </div>
                                 <div class="col-sm-12 col-md-6 ">
                                 <div id="dataTable_filter" class="dataTables_filter">
-                                   <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="margin-top: 20px; margin-bottom: 20px; background: linear-gradient(to bottom, #674188, #D4BEE4); border:none; color:white;"> Add barang</button>    
+                                   <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="margin-top: 20px; margin-bottom: 20px; background: linear-gradient(to bottom, #9B7EBD, #D4BEE4); font-weight: bold; border:none; color:white;"> Add barang</button>    
                                 
 <!-- Modal  add barang -->
   <?php
@@ -179,16 +182,14 @@ session_start();
                               <div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                                     <thead>
                                     <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 64.75px;">Kode Barang</th>
-                                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">id</th>
                                       <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">Nama barang</th>
-                                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 55.7969px;">Jumlah Barang</th>
+                                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80.6094px;">Jumlah Barang</th>
                                       <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 55.7969px;">Action</th>
                               </thead>
                                     <tbody>
                                          <?php foreach($data as $item) : ?>
                                     <tr class="odd">
                                             <td class="sorting_1"><?php echo $item['Kode_barang']; ?></td>
-                                            <td><?php echo $item['id']; ?></td>
                                             <td><?php echo $item['nama_barang']; ?></td>
                                             <td><?php echo $item['Jumlah_barang']; ?></td>
                                             <td><a href='' class='btn btn-warning' data-toggle="modal" data-target="#modal<?php echo "$item[id]";?>" data-target="#edit8"><i class="fa-solid fa-pen"></i></a> <?php echo"<a href='javascript:hapusdata(".$item['id'].")'><button class='btn btn-danger'><i class='fa-solid fa-trash'></i></button></a>";?></td>

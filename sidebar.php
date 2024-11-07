@@ -1,7 +1,7 @@
 <?php
 if($_SESSION['role']=="admin"):?>
 
-<ul class="f1 navbar-nav text-light sidebar sidebar-dark accordion" id="accordionSidebar" style=" background: linear-gradient(to bottom, #A87676, #FFD0D0);  border-radius: 20px;">
+<ul class="f1 navbar-nav text-light sidebar sidebar-dark accordion" id="accordionSidebar" style=" background: linear-gradient(to bottom, #9B7EBD, #D4BEE4);  border-radius: 20px;">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -95,7 +95,7 @@ if($_SESSION['role']=="admin"):?>
 
         </ul>
         <?php else:?>
-        <ul class="navbar-nav text-light sidebar sidebar-dark accordion" id="accordionSidebar" style="background: linear-gradient(to bottom, #A87676, #FFD0D0);  border-radius: 20px;">
+        <ul class="navbar-nav text-light sidebar sidebar-dark accordion" id="accordionSidebar" style="background: linear-gradient(to bottom, #9B7EBD, #D4BEE4);  border-radius: 20px;">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">

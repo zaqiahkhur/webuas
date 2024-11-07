@@ -85,6 +85,9 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
+                       <li class="nav-item d-flex align-items-center">
+                              <span class="mr-2">Hello <?=$_SESSION['username']?></span>
+                          </li>
                         <!-- Nav Item - Messages -->
                     
 
@@ -92,6 +95,7 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
+                          
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="img-profile rounded-circle"
@@ -123,7 +127,7 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
                                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length">
                               </div></div>
                                 <div class="col-sm-12 col-md-6"><div id="dataTable_filter" class="dataTables_filter">
-                                 <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="margin-top: 20px; margin-bottom: 20px; background: linear-gradient(to bottom, #674188, #D4BEE4); border:none; color:white;"> Add Peminjaman</button>
+                                 <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="margin-top: 20px; margin-bottom: 20px; background: linear-gradient(to bottom, #9B7EBD, #D4BEE4);; font-weight: bold;  border:none; color:white;"> Add Peminjaman</button>
                                 
 <!-- Modal  add barang -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -236,10 +240,11 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
                                         <tr role="row">
                                         <th >Kode Pinjam</th>
                                         <th >Kode barang</th>
-                                        <th >No_identitas</th>
-                                        <th >Jumlah barang</th>
+                                        <!-- <th >No_identitas</th> -->
+                                    
                                         <th>Tanggal pinjam</th>
                                         <th>Tanggal Kembali </th>
+                                            <th >Jumlah barang</th>
                                         <th>Status </th>
                                         <th>Keperluan </th>
                                          <th>Action </th>
@@ -251,15 +256,15 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
                                     <tr class="odd">
                                             <td><?php echo $item['Kode_pinjam']; ?></td>
                                             <td><?php echo $item['kode_barang']; ?></td>
-                                            <td><?php echo $item['no_identitas']; ?></td>
-                                            <td><?php echo $item['Jumlah_barang']; ?></td>
+                                            <!-- <td><?php echo $item['no_identitas']; ?></td> -->
                                             <td><?php echo $item['tanggal_pinjam']; ?></td>
                                             <td><?php echo $item['tanggal_kembali']; ?></td>
+                                             <td><?php echo $item['Jumlah_barang']; ?></td>
                                             <td><?php echo $item['status']; ?></td>
                                             <td><?php echo $item['keperluan']; ?></td>
                                              <td><a href='' class='btn btn-warning' data-toggle="modal" data-target="#modal<?php echo "$item[id]";?>" data-target="#edit8"><i class="fa-solid fa-pen"></i></a> 
-                                             <?php echo "<a href='javascript:kembalikanBarang(".$item['id']." ,".$item['Jumlah_barang'].",".$item['kode_barang'].")'><button type='button' class='btn btn-success'>Kembalikan</button></a>" ; ?>
-                                            
+                                           <?php echo "<a href='javascript:kembalikanBarang(".$item['id']." ,".$item['Jumlah_barang'].",\"".$item['kode_barang']."\")'>
+                                           <button type='button' class='btn btn-success'>Kembalikan</button></a>" ; ?>
                                             </tr>
                                              </td>
                                         </tr> 
@@ -382,13 +387,15 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
         if (confirm("apakah anda yakin akan menghapus data ini?")){
         window.location.href = 'delete_brg.php?id=' +id;
                                 }
-                        }
-    function kembalikanBarang(id,jumlah,kd){
-    if(confirm("Kembalikan Barang")){
-        $kdubah = str_replace('BRG', '', kd);
-        window.location.href ="kembalikan_barang.php?id=" +id+"&Jumlah_barang="+jumlah+"&kd="+$kdubah;
-        }
+                        } 
+function kembalikanBarang(id, jumlah, kd) {
+    if (confirm("Kembalikan Barang")) {
+        // Pastikan kode barang yang dikirim sudah benar
+        let kdUbah = kd.replace('BRG', '');
+        window.location.href = "kembalikan_barang.php?id=" + id + "&Jumlah_barang=" + jumlah + "&kd=" + kdUbah;
     }
+}
+
                             </script>
 
     <!-- Bootstrap core JavaScript-->
