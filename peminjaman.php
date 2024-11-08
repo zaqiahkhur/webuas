@@ -262,7 +262,7 @@ $kodeBarangpinjam = $huruf . sprintf("%03s", $urutan);
                                              <td><?php echo $item['Jumlah_barang']; ?></td>
                                             <td><?php echo $item['status']; ?></td>
                                             <td><?php echo $item['keperluan']; ?></td>
-                                             <td><a href='' class='btn btn-warning' data-toggle="modal" data-target="#modal<?php echo "$item[id]";?>" data-target="#edit8"><i class="fa-solid fa-pen"></i></a> 
+                                             <td><a href='' class='' data-toggle="modal" data-target="#modal<?php echo "$item[id]";?>" data-target="#edit8"></i></a> 
                                            <?php echo "<a href='javascript:kembalikanBarang(".$item['id']." ,".$item['Jumlah_barang'].",\"".$item['kode_barang']."\")'>
                                            <button type='button' class='btn btn-success'>Kembalikan</button></a>" ; ?>
                                             </tr>
